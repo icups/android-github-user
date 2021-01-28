@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.github.app.ui.main.MainViewModel.UiMode" />
+
+        <variable
+            name="vm"
+            type="com.github.app.ui.main.MainViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/colorWhite"
+            android:visibility="@{vm.uiMode == UiMode.ON_PROGRESS ? View.VISIBLE : View.GONE, default=`gone`}" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:visibility="@{vm.uiMode == UiMode.NOT_FOUND ? View.VISIBLE : View.GONE, default=`gone`}"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="not_found.json"
+            app:lottie_loop="true" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:layoutAnimation="@anim/layout_animation_in_bottom"
+                android:orientation="vertical"
+                android:paddingBottom="16dp"
+                android:visibility="@{vm.uiMode == UiMode.NOT_FOUND ? View.GONE : View.VISIBLE, default=`gone`}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:layoutAnimation="@null"
+                tools:listitem="@layout/item_user"
+                tools:visibility="visible" />
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:elevation="0dp">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|enterAlways|snap">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="?android:attr/actionBarSize"
+                        android:elevation="0dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="12dp">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edit_keyword"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/colorWhite"
+                            android:hint="@string/name"
+                            android:inputType="textCapWords|textNoSuggestions"
+                            android:maxLines="1"
+                            android:textColor="@color/colorWhite"
+                            android:textColorHint="@color/colorGrey"
+                            tools:text="Github User" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/button_search"
+                            style="@style/AppTheme.TextAppearance.Item.Clickable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:background="@color/white"
+                            android:onClick="@{()-> vm.clickFindUser()}"
+                            android:text="@string/search"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorAccent" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            app:layout_collapseMode="pin"
+            app:layout_scrollFlags="noScroll">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                app:srcCompat="@drawable/ic_svg_github" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/app_name"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </FrameLayout>
+
+</layout>

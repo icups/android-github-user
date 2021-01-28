@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="text" format="string" />
+    <attr name="hint" format="string" />
+
+    <declare-styleable name="Placeholder">
+        <attr name="placeholderLayout" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="RegisterSubjectText">
+        <attr name="text" />
+    </declare-styleable>
+
+    <declare-styleable name="MandatoryEditText">
+        <attr name="text" />
+        <attr name="hint"/>
+
+        <attr name="android:inputType" />
+    </declare-styleable>
+
+    <declare-styleable name="MandatoryAutoCompleteText">
+        <attr name="text" />
+        <attr name="hint"/>
+
+        <attr name="android:inputType" />
+        <attr name="android:maxLength" />
+    </declare-styleable>
+
+    <declare-styleable name="MandatoryMultilineText">
+        <attr name="text" />
+        <attr name="hint"/>
+    </declare-styleable>
+
+    <declare-styleable name="MandatorySection">
+        <attr name="text" />
+    </declare-styleable>
+
+    <declare-styleable name="PasswordEditText">
+        <attr name="passwordText" format="string" />
+        <attr name="passwordHint" format="string" />
+        <attr name="isMandatory" format="boolean" />
+    </declare-styleable>
+
+</resources>

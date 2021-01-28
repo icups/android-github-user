@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\Yusuf Maulana\\AndroidStudioProjects\\android-github-user\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Yusuf Maulana\\AndroidStudioProjects\\android-github-user\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Yusuf Maulana\\AndroidStudioProjects\\android-github-user\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_user.xml",
+        "source": "C:\\Users\\Yusuf Maulana\\AndroidStudioProjects\\android-github-user\\app\\src\\main\\res\\layout\\item_user.xml"
+    }
+]

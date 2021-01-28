@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Bottom Navigation -->
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">10sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">10sp</dimen>
+
+    <dimen name="design_fab_image_size" tools:override="true">40dp</dimen>
+
+    <dimen name="transaction_padding_bottom">128dp</dimen>
+    <dimen name="padding_null">0dp</dimen>
+</resources>
