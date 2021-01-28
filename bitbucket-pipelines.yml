@@ -1,0 +1,22 @@
+image: mreichelt/android:29
+
+pipelines:
+  default:
+    - step:
+        name: Upload File
+        caches:
+          - gradle
+          - gradlewrapper
+        script:
+          - ./gradlew assembleDebug
+          - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files="./app/build/outputs/apk/debug/app-debug.apk"
+          - pipe: atlassian/bitbucket-upload-file:0.1.1
+            variables:
+              BITBUCKET_USERNAME: $BITBUCKET_USERNAME
+              BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
+              FILENAME: "./app/build/outputs/apk/debug/app-debug.apk"
+        artifacts:
+          - ./app/build/outputs/apk/
+definitions:
+  caches:
+    gradlewrapper: ~/.gradle/wrapper
