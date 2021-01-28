@@ -1,0 +1,14 @@
+com/github/dao/HeaderDao_Impl.java
+ com.github.dao.HeaderDao_Impl
+ com.github.dao.HeaderDao_Impl$1
+ com.github.dao.HeaderDao_Impl$2
+ com.github.dao.HeaderDao_Impl$3
+ com.github.dao.HeaderDao_Impl$4
+ com.github.dao.HeaderDao_Impl$5
+ com.github.dao.HeaderDao_Impl$6
+ com.github.dao.HeaderDao_Impl$7
+com/github/repository/BuildConfig.java
+ com.github.repository.BuildConfig
+com/github/database/UserDatabase_Impl.java
+ com.github.database.UserDatabase_Impl
+ com.github.database.UserDatabase_Impl$1

@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "URL_API", "\"https://api.github.com/\""
+        }
+
+        release {
+            buildConfigField "String", "URL_API", "\"https://api.github.com/\""
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // network
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    api 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+    api 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    api 'com.squareup.okhttp3:okhttp:4.7.2'
+
+    // asynchronous
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0'
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0'
+
+    // gson
+    api 'com.squareup.moshi:moshi-kotlin:1.11.0'
+    api 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
+    // local database
+    api 'androidx.room:room-runtime:2.2.6'
+    api 'androidx.room:room-ktx:2.2.6'
+
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
+    kapt "androidx.room:room-compiler:2.2.6"
+}
