@@ -9,7 +9,7 @@ MERGED from [androidx.databinding:databinding-runtime:4.1.2] C:\Users\Yusuf Maul
 MERGED from [com.github.chuckerteam.chucker:library:3.4.0] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\c6dc299be55ae775dd5ab1e29e8f884c\jetified-library-3.4.0\AndroidManifest.xml:2:1-46:12
 MERGED from [androidx.databinding:viewbinding:4.1.2] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\51658a1a0b20716418ebd4a4b2468d49\jetified-viewbinding-4.1.2\AndroidManifest.xml:17:1-22:12
 MERGED from [com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\a691f90e0ba6986780f61784a59ecfe1\jetified-viewpagerdotsindicator-4.1.2\AndroidManifest.xml:2:1-13:12
-MERGED from [:repository] C:\Users\Yusuf Maulana\AndroidStudioProjects\android-github-user\repository\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:network] C:\Users\Yusuf Maulana\AndroidStudioProjects\android-github-user\network\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [com.karumi:dexter:5.0.0] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\3e904e76290b8e6a73e31605e83b1692\jetified-dexter-5.0.0\AndroidManifest.xml:17:1-32:12
 MERGED from [com.miguelcatalan:materialsearchview:1.4.0] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\fc98b7374a22f217cc05ddd39bbbe662\jetified-materialsearchview-1.4.0\AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\6f2eb6b490be33f969696035d2da4f01\material-1.2.1\AndroidManifest.xml:17:1-24:12
@@ -314,8 +314,8 @@ MERGED from [androidx.databinding:viewbinding:4.1.2] C:\Users\Yusuf Maulana\.gra
 MERGED from [androidx.databinding:viewbinding:4.1.2] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\51658a1a0b20716418ebd4a4b2468d49\jetified-viewbinding-4.1.2\AndroidManifest.xml:20:5-44
 MERGED from [com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\a691f90e0ba6986780f61784a59ecfe1\jetified-viewpagerdotsindicator-4.1.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\a691f90e0ba6986780f61784a59ecfe1\jetified-viewpagerdotsindicator-4.1.2\AndroidManifest.xml:7:5-9:41
-MERGED from [:repository] C:\Users\Yusuf Maulana\AndroidStudioProjects\android-github-user\repository\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
-MERGED from [:repository] C:\Users\Yusuf Maulana\AndroidStudioProjects\android-github-user\repository\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:network] C:\Users\Yusuf Maulana\AndroidStudioProjects\android-github-user\network\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:network] C:\Users\Yusuf Maulana\AndroidStudioProjects\android-github-user\network\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [com.karumi:dexter:5.0.0] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\3e904e76290b8e6a73e31605e83b1692\jetified-dexter-5.0.0\AndroidManifest.xml:22:5-24:41
 MERGED from [com.karumi:dexter:5.0.0] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\3e904e76290b8e6a73e31605e83b1692\jetified-dexter-5.0.0\AndroidManifest.xml:22:5-24:41
 MERGED from [com.miguelcatalan:materialsearchview:1.4.0] C:\Users\Yusuf Maulana\.gradle\caches\transforms-2\files-2.1\fc98b7374a22f217cc05ddd39bbbe662\jetified-materialsearchview-1.4.0\AndroidManifest.xml:7:5-9:41

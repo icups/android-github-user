@@ -1,8 +1,6 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.rubensousa:gravitysnaphelper:2.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a87f7a7f91b09051ed284a5bcec03257/jetified-gravitysnaphelper-2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7bdb4f6dac5d025bb655945df8196c33/jetified-gravitysnaphelper-2.0/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d58b6b0faa5f2c248a85b469d5301752/jetified-gravitysnaphelper-2.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d58b6b0faa5f2c248a85b469d5301752/jetified-gravitysnaphelper-2.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d58b6b0faa5f2c248a85b469d5301752/jetified-gravitysnaphelper-2.0/AndroidManifest.xml" />

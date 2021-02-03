@@ -7,16 +7,16 @@ import com.github.app.base.BaseActivity
 import com.github.app.databinding.ActivityMainBinding
 import com.github.app.listener.LinearLoadMoreListener
 import com.github.app.ui.dialog.DialogConfirmation
+import com.github.app.ui.main.MainViewModel.UiMode
 import com.github.app.ui.main.MainViewModel.UiRequest
 import com.github.app.ui.user.UserAdapter
 import com.github.ext.alert.showLongToast
 import com.github.ext.alert.showToast
 import com.github.ext.common.exitFromApps
-import com.github.ext.gson.fromJson
 import com.github.ext.input.hideKeyboard
 import com.github.ext.vm.observe
-import com.github.response.ErrorResponse
-import retrofit2.HttpException
+import com.github.model.State
+import com.github.model.User
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -36,7 +36,9 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
 
     private val adapter = UserAdapter()
 
-    private var loading: Boolean = false
+    // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+    private var onProcess: Boolean = false
     private var errorTimer: Timer? = null
 
     // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -48,8 +50,17 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
         }
     }
 
+    // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
     override fun setupObserver() {
         viewModel.run {
+            observe(uiMode) {
+                when (it) {
+                    UiMode.INITIATE -> adapter.clear()
+                    else -> return@observe
+                }
+            }
+
             observe(uiRequest) {
                 when (it) {
                     UiRequest.FIND_USER -> doFindUser()
@@ -57,19 +68,12 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
             }
 
             // Sorry for the duplicate item in list, probably isn't adapter fault, github api returning the same data on a different page.
-            observe(users) {
-                it.onSuccess { result ->
-                    if (result.isEmpty()) return@observe
-                    else adapter.run { if (nextPage == 1) replaceAll(result) else addAll(result) }; nextPage++
-                }
-                it.onFailure { ex ->
-                    if (ex is HttpException) {
-                        val response = fromJson(ex.response()?.errorBody()?.string(), ErrorResponse::class.java)
-                        showErrorMessage(response?.message)
-                    } else {
-                        showErrorMessage(ex.message)
-                    }
-                }; loading = false
+            observe(users) { result ->
+                when (result) {
+                    is State.Success -> handleUserData(result.data)
+                    is State.Failure -> handleException(result.message)
+                    is State.Error -> handleException(result.message)
+                }; onProcess = false
             }
         }
     }
@@ -82,38 +86,46 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
         binding.recyclerUser.run {
             addOnScrollListener(object : LinearLoadMoreListener(layoutManager) {
                 override fun isLoading(): Boolean {
-                    return loading
+                    return onProcess
                 }
 
                 override fun loadMoreItems() {
-                    if (errorTimer == null) viewModel.findUser(); loading = true
+                    if (errorTimer == null) viewModel.findUser(); onProcess = true
                 }
             })
         }
     }
 
-    private fun doFindUser() {
+    // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+    private fun MainViewModel.doFindUser() {
         binding.editKeyword.hideKeyboard()
 
-        if (requireKeyword().isEmpty()) {
-            viewModel.initiateLayout(); adapter.clear(); return
-        }
-
-        if (errorTimer != null) {
-            showToast("Please try again later..."); return
-        } else {
-            viewModel.run { findUser(requireKeyword(), 1); nextPage = 1 }; loading = true;
+        when {
+            requireKeyword().isEmpty() -> viewModel.initiateLayout()
+            errorTimer != null -> showToast("Please try again later...")
+            else -> {
+                findUser(requireKeyword(), 1); mPage = 1; onProcess = true;
+            }
         }
     }
 
-    private fun showErrorMessage(message: String?) {
-        showLongToast(message)
+    private fun MainViewModel.handleUserData(list: List<User>) {
+        if (list.isNotEmpty()) {
+            adapter.run { if (mPage == 1) replaceAll(list) else addAll(list) }; mPage++
+        }
+    }
 
+    private fun handleException(message: String?) {
+        showLongToast(message)
+        onProcess = true
         errorTimer?.cancel()
         errorTimer = Timer().apply {
-            schedule(15000) { errorTimer = null; loading = false }
+            schedule(15000) { errorTimer = null; onProcess = false }
         }
     }
+
+    // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
     private fun requireKeyword(): String {
         return binding.editKeyword.text.toString()

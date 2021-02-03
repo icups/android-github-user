@@ -1,2 +1,2 @@
-include ':repository'
+include ':network'
 include ":app"

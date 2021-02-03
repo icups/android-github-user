@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/android-github-user.iml" filepath="$PROJECT_DIR$/.idea/modules/android-github-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android-github-user.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android-github-user.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/repository/android-github-user.repository.iml" filepath="$PROJECT_DIR$/.idea/modules/repository/android-github-user.repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/repository/android-github-user.network.iml" filepath="$PROJECT_DIR$/.idea/modules/repository/android-github-user.network.iml" />
     </modules>
   </component>
 </project>
