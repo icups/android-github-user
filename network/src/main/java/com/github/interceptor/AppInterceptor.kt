@@ -11,6 +11,7 @@ class AppInterceptor(private var accessToken: String? = null) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request: Request = chain.request()
+
         val newRequest = request.newBuilder().apply {
             addHeader("Accept", "application/json")
             accessToken?.run { addHeader("Authorization", "Bearer $this") }
@@ -19,10 +20,10 @@ class AppInterceptor(private var accessToken: String? = null) : Interceptor {
         val response = chain.proceed(newRequest)
 
         if (response.isSuccessful) return response
-        else throw NetworkException(getErrorResponse(response))
+        else throw NetworkException(getErrorFrom(response))
     }
 
-    private fun getErrorResponse(response: Response): ErrorResponse? {
+    private fun getErrorFrom(response: Response): ErrorResponse? {
         return fromJson(response.body?.string(), ErrorResponse::class.java)
     }
 
