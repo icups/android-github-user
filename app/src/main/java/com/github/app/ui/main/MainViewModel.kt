@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.app.repository.UserRepository
-import com.github.exception.NetworkException
 import com.github.model.State
 import com.github.model.User
 import kotlinx.coroutines.launch
@@ -47,9 +46,8 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
                 }
             } catch (e: Exception) {
                 mUsers.postValue(when (e) {
-                    is NetworkException -> State.Failure(e)
-                    is UnknownHostException -> State.Error("Please check your internet connection and try again.")
-                    else -> State.Error(e.message)
+                    is UnknownHostException -> State.Failure("Please check your internet connection and try again.")
+                    else -> State.Failure(e.message)
                 })
                 mUiMode.postValue(UiMode.ERROR)
             }

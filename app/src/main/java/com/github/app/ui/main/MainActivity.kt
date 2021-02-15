@@ -67,12 +67,10 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
                 }
             }
 
-            // Sorry for the duplicate item in list, probably isn't adapter fault, github api returning the same data on a different page.
             observe(users) { result ->
                 when (result) {
                     is State.Success -> handleUserData(result.data)
                     is State.Failure -> handleException(result.message)
-                    is State.Error -> handleException(result.message)
                 }; onProcess = false
             }
         }
@@ -102,7 +100,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
         binding.editKeyword.hideKeyboard()
 
         when {
-            requireKeyword().isEmpty() -> viewModel.initiateLayout()
+            requireKeyword().isEmpty() -> initiateLayout()
             errorTimer != null -> showToast("Please try again later...")
             else -> {
                 findUser(requireKeyword(), 1); mPage = 1; onProcess = true;
