@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Github User</string>
+
+    <!--  GENERAL  -->
+    <string name="asterisk">*</string>
+    <string name="back">Back</string>
+    <string name="bullet">•</string>
+    <string name="camera">Camera</string>
+    <string name="cancel">Cancel</string>
+    <string name="check_your_network">Please check your network connection and try again.</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="connection_timed_out">The connection has timed out, please try again later.</string>
+    <string name="congrats">Congrats!</string>
+    <string name="delete">Delete</string>
+    <string name="done">Done</string>
+    <string name="email">Email</string>
+    <string name="empty_string" />
+    <string name="error">Error</string>
+    <string name="home">Home</string>
+    <string name="gallery">Gallery</string>
+    <string name="general_error">Sorry, something went wrong!\nWe are working on getting this fixed as soon as we can.</string>
+    <string name="get_started">Get Started</string>
+    <string name="got_it">Got it</string>
+    <string name="keyword_not_found">Keyword not found</string>
+    <string name="just_so_you_know">Just so you know…</string>
+    <string name="language">Language</string>
+    <string name="next">Next</string>
+    <string name="no">No</string>
+    <string name="ok">OK</string>
+    <string name="or">Or</string>
+    <string name="other">Other</string>
+    <string name="data_not_found">Data not found</string>
+    <string name="profile">Profile</string>
+    <string name="pull_down_to_refresh_page">Pull down to refresh page</string>
+    <string name="search">Search</string>
+    <string name="search_with_dots">Search…</string>
+    <string name="slash">/</string>
+    <string name="success">Success</string>
+    <string name="symbol_bullet">•</string>
+    <string name="text_continue">Continue</string>
+    <string name="try_again">Try Again</string>
+    <string name="under_development">Under Development!</string>
+    <string name="verify">Verify</string>
+    <string name="whoops">Whoops! there is an error.</string>
+    <string name="yay">Yay!</string>
+    <string name="yes">Yes</string>
+    <string name="zero">0</string>
+</resources>

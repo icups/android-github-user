@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="error"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cultured"
+        android:orientation="vertical"
+        tools:context=".ui.main.MainActivity">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#171515"
+            app:title="@string/app_name">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                app:srcCompat="@drawable/ic_github" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animatedVisibility="@{error}"
+                android:background="@color/cultured"
+                android:visibility="gone"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/error" />
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swiper_user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_user" />
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+            <!-- LOADING VIEW -->
+            <ProgressBar
+                android:id="@+id/progress_more"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="-6dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/chinese_black"
+                android:scaleY="2"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:id="@+id/progress_circular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cultured">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/chinese_black" />
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

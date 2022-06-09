@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.github.app.ui.main.MainViewModel" />
+
+        <variable
+            name="item"
+            type="com.github.network.model.User" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/ItemClickable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:onClick="@{()-> vm.clickLoyalty(item)}"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        tools:layout_marginVertical="0dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_profile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_circle_shadow"
+            android:circleImage="@{item.avatarUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_github" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_username"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:text="@{item.username}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/text_repository"
+            app:layout_constraintStart_toEndOf="@id/image_profile"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Anonymous" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_repository"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{item.reposUrl}"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/text_username"
+            app:layout_constraintTop_toBottomOf="@id/text_username"
+            tools:text="github.com/anonymous" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
